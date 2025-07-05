@@ -40,7 +40,7 @@ new class extends Component
                         {{ __('Siswa') }}
                     </x-nav-link>
                     <x-nav-link :href="route('summary')" :active="request()->routeIs('summary')" wire:navigate>
-                        {{ __('List Siswa, Kelas dan Guru') }}
+                    {{ __('Ringkasan') }}
                     </x-nav-link>
                 </div>
             </div>

@@ -55,6 +55,7 @@
 
                         {{-- Tombol Hapus dengan Modal Kustom Alpine.js --}}
                         <div x-data="{ showModal: false, itemId: null }">
+                             <a href="{{ route('kelas.show', $item->id) }}" wire:navigate class="bg-gray-500 text-white font-bold py-1 px-2 rounded">Lihat</a>
                             <button @click="showModal = true; itemId = {{ $item->id }};" class="bg-red-500 text-white font-bold py-1 px-2 rounded">
                                 Hapus
                             </button>

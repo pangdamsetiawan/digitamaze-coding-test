@@ -1,17 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Kelas; // ✅ Tambahkan ini
 
-Route::view('/', '/login');
+// Saya perbaiki sedikit dari Route::view menjadi Route::redirect
+Route::redirect('/', '/login');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
-// TAMBAHKAN ROUTE UNTUK KELAS DI SINI
 Route::view('kelas', 'kelas')
     ->middleware(['auth', 'verified'])
     ->name('kelas');
+
+// Menambahkan route baru untuk menampilkan detail kelas (Poin 5 & 6)
+Route::get('/kelas/{kelas}', function (Kelas $kelas) {
+    return view('kelas-show', ['kelas' => $kelas]);
+})->middleware(['auth', 'verified'])->name('kelas.show');
 
 Route::view('guru', 'guru')
     ->middleware(['auth', 'verified'])
@@ -28,5 +34,14 @@ Route::view('summary', 'summary')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
+
+Route::view('laporan-guru', 'laporan.guru-page')
+    ->middleware(['auth', 'verified'])
+    ->name('laporan.guru');
+
+Route::view('laporan-siswa', 'laporan.siswa-page')
+    ->middleware(['auth', 'verified'])
+    ->name('laporan.siswa');
+
 
 require __DIR__.'/auth.php';
