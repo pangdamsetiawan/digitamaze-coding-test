@@ -1,8 +1,23 @@
 <div>
-    {{-- Tombol untuk membuka modal --}}
-    <button wire:click="create()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4">
-        Tambah Kelas
-    </button>
+    {{-- BAGIAN ATAS HALAMAN --}}
+    <div class="flex justify-between items-center mb-4">
+        {{-- Judul dipindahkan ke sini --}}
+        <h3 class="text-lg font-bold">Daftar Kelas</h3>
+
+        {{-- Grup Tombol di Kanan --}}
+        <div class="flex gap-2">
+            <a href="{{ route('laporan.siswa') }}" wire:navigate class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                List Siswa berdasarkan kelasnya
+            </a>
+            <a href="{{ route('laporan.guru') }}" wire:navigate class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                List Guru berdasarkan Kelasnya
+            </a>
+            <button wire:click="create()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                Tambah Kelas
+            </button>
+        </div>
+    </div>
+
 
     {{-- Pesan Sukses --}}
     @if (session()->has('message'))
@@ -36,7 +51,6 @@
     @endif
 
     {{-- Tabel Data --}}
-    <h3 class="text-lg font-bold mb-4">Daftar Kelas</h3>
     <table class="min-w-full bg-white">
         <thead class="bg-gray-200">
             <tr>
@@ -51,11 +65,10 @@
                     <td class="text-left py-3 px-4">{{ $loop->iteration }}</td>
                     <td class="text-left py-3 px-4">{{ $item->nama }}</td>
                     <td class="text-left py-3 px-4 flex gap-2">
-                        <button wire:click="edit({{ $item->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Edit</button>
-
-                        {{-- Tombol Hapus dengan Modal Kustom Alpine.js --}}
+                        <button wire:click="edit({{ $item->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                            Edit
+                        </button>
                         <div x-data="{ showModal: false, itemId: null }">
-                             <a href="{{ route('kelas.show', $item->id) }}" wire:navigate class="bg-gray-500 text-white font-bold py-1 px-2 rounded">Lihat</a>
                             <button @click="showModal = true; itemId = {{ $item->id }};" class="bg-red-500 text-white font-bold py-1 px-2 rounded">
                                 Hapus
                             </button>

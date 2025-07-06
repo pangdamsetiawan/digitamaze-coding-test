@@ -1,7 +1,8 @@
 <?php
+
 namespace App\Livewire\Laporan;
+
 use App\Models\Kelas;
-use App\Models\Siswa;
 use Livewire\Component;
 
 class SiswaReport extends Component
@@ -10,15 +11,16 @@ class SiswaReport extends Component
 
     public function render()
     {
-        $siswas = Siswa::with('kelas')
+        // Ambil data KELAS (bukan siswa) dan filter berdasarkan ID kelas jika ada
+        $kelas = Kelas::with('siswas')
             ->when($this->filterKelasId, function ($query) {
-                $query->where('kelas_id', $this->filterKelasId);
+                $query->where('id', $this->filterKelasId);
             })
             ->get();
 
         return view('livewire.laporan.siswa-report', [
-            'listSiswa' => $siswas,
-            'listKelas' => Kelas::all(),
+            'listSemuaKelas' => Kelas::all(), // Untuk dropdown filter
+            'listKelasDenganSiswa' => $kelas, // Data utama yang sudah dikelompokkan
         ]);
     }
 }
