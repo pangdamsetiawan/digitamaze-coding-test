@@ -12,6 +12,9 @@
             <a href="{{ route('laporan.guru') }}" wire:navigate class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
                 List Guru berdasarkan Kelasnya
             </a>
+            <a href="{{ route('summary') }}" wire:navigate class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+                List guru dan siswa
+            </a>
             <button wire:click="create()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Tambah Kelas
             </button>
