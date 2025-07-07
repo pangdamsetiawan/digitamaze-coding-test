@@ -20,14 +20,13 @@ class Index extends Component
 
             for ($i = 0; $i < $max; $i++) {
                 $rows->push([
-                    'kelas' => $kelas->nama,
+                    'kelas' => $i === 0 ? $kelas->nama : '', // hanya di baris pertama
                     'guru' => $kelas->gurus[$i]->nama ?? '-',
                     'siswa' => $kelas->siswas[$i]->nama ?? '-',
                 ]);
             }
         }
 
-        // pastikan variabel ini dikirim
         return view('livewire.summary.index', [
             'listData' => $rows,
         ]);

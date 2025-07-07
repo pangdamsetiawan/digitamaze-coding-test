@@ -14,7 +14,7 @@
             <tr>
                 <th class="py-2 px-4 border">Kelas</th>
                 <th class="py-2 px-4 border">Nama Guru</th>
-                <th class="py-2 px-4 border"> Nama Siswa</th>
+                <th class="py-2 px-4 border">Nama Siswa</th>
             </tr>
         </thead>
         <tbody>
