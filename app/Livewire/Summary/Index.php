@@ -23,6 +23,7 @@ class Index extends Component
                     'kelas' => $i === 0 ? $kelas->nama : '', // hanya di baris pertama
                     'guru' => $kelas->gurus[$i]->nama ?? '-',
                     'siswa' => $kelas->siswas[$i]->nama ?? '-',
+                    
                 ]);
             }
         }

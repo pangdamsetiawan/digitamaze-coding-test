@@ -3,6 +3,9 @@
     <button wire:click="create()" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4">
         Tambah Siswa
     </button>
+    <a href="{{ route('laporan.orangtua') }}" wire:navigate class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+    Tabel Siswa dan orangtuanya
+    </a>
     @if (session()->has('message'))
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
             <span class="block sm:inline">{{ session('message') }}</span>

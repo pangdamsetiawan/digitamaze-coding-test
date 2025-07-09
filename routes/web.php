@@ -43,5 +43,11 @@ Route::view('laporan-siswa', 'laporan.siswa-page')
     ->middleware(['auth', 'verified'])
     ->name('laporan.siswa');
 
+Route::view('orangtua', 'orangtua' )
+    ->middleware(['auth', 'verified'])
+    ->name('orangtua');
 
+Route::view('laporan-orangtua', 'laporan.orangtua-page')
+    ->middleware(['auth', 'verified'])
+    ->name('laporan.orangtua');
 require __DIR__.'/auth.php';
